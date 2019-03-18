@@ -1,6 +1,5 @@
 import com.suns.User;
-import com.suns.UserDao;
-import com.suns.UserDaoImpl;
+import com.suns.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -12,9 +11,9 @@ import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
-public class UserDaoTest {
+public class UserMapperTest {
 
-    private UserDao userDao;
+    private UserMapper userMapper;
     private SqlSession sqlSession;
 
     @Before
@@ -27,18 +26,18 @@ public class UserDaoTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(is);
         // 获取sqlSession
         sqlSession = sqlSessionFactory.openSession();
-        this.userDao = new UserDaoImpl(sqlSession);
+        this.userMapper = sqlSession.getMapper(UserMapper.class);
     }
 
     @Test
     public void queryUserById() {
-        System.out.println(this.userDao.queryUserById("1"));
+        System.out.println(this.userMapper.queryUserById("1"));
 
     }
 
     @Test
     public void queryUserAll() {
-        List<User> userList = this.userDao.queryUserAll();
+        List<User> userList = this.userMapper.queryUserAll();
         for (User user : userList) {
             System.out.println(user);
         }
@@ -53,7 +52,7 @@ public class UserDaoTest {
         user.setPassword("123456");
         user.setSex(1);
         user.setUserName("evan");
-        this.userDao.insertUser(user);
+        this.userMapper.insertUser(user);
         this.sqlSession.commit();
 
     }
@@ -67,13 +66,13 @@ public class UserDaoTest {
         user.setSex(1);
         user.setUserName("evanjin");
         user.setId("1");
-        this.userDao.updateUser(user);
+        this.userMapper.updateUser(user);
         this.sqlSession.commit();
     }
 
     @Test
     public void deleteUser() {
-        this.userDao.deleteUser("4");
+        this.userMapper.deleteUser("4");
         this.sqlSession.commit();
     }
 }

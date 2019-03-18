@@ -19,7 +19,7 @@
 
 
     <mappers>
-        <mapper resource="mybatismapper/UserMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 
 </configuration>

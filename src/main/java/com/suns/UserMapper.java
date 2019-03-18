@@ -1,8 +1,15 @@
 package com.suns;
 
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
-public interface UserDao {
+public interface UserMapper {
+
+
+    public User login(@Param("userName") String userName, @Param("password") String password);
+
+
     /**
      * 根据id查询用户信息
      *
