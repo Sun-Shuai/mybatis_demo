@@ -1,4 +1,4 @@
-package com.suns;
+package com.suns.pojo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

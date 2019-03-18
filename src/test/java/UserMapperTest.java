@@ -1,4 +1,4 @@
-import com.suns.User;
+import com.suns.pojo.User;
 import com.suns.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
