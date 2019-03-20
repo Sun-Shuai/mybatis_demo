@@ -73,8 +73,8 @@
         (id = #{id});
     </update>
 
-    <delete id="deleteUser">
-        delete from tb_user where id=#{id}
-    </delete>
+    <!--<delete id="deleteUser">-->
+        <!--delete from tb_user where id=#{id}-->
+    <!--</delete>-->
 
 </mapper>

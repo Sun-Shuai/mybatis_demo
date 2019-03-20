@@ -1,6 +1,7 @@
 package com.suns;
 
 import com.suns.pojo.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -45,6 +46,7 @@ public interface UserMapper {
      *
      * @param id
      */
+    @Delete("delete from tb_user where id=#{id}")
     public void deleteUser(String id);
 
 }
